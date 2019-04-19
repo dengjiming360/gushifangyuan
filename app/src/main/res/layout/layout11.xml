@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical|end"
+    android:paddingTop="17dp"
+    android:paddingBottom="17dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tv31"
+        android:textSize="14sp"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="14sp"
+        android:autoSizeMinTextSize="6sp"
+        android:paddingLeft="15dp"
+        android:maxLines="1"
+        android:gravity="left|center_vertical"
+        app:autoSizeStepGranularity="1sp"
+        android:layout_gravity=""
+        android:layout_weight="1"
+        />
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/tv32"
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="14sp"
+        android:autoSizeMinTextSize="6sp"
+        android:paddingLeft="15dp"
+        android:gravity="left|center_vertical"
+        app:autoSizeStepGranularity="1sp"
+        android:layout_weight="1"
+        />
+
+</LinearLayout>

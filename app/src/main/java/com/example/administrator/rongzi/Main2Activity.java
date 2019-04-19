@@ -42,8 +42,8 @@ ArrayList<item>item1=new ArrayList<item>();
         RecyclerView rcv=(RecyclerView)dialogview.findViewById(R.id.rcv2);
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
-        MyAdpater2 myAdpater2=new MyAdpater2(item2);
-        rcv.setAdapter(myAdpater2);
+        MyAdapter2 myAdapter2=new MyAdapter2(item2);
+        rcv.setAdapter(myAdapter2);
        rcv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         alert.show();
     }

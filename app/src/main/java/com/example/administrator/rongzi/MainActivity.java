@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView rcv = bsd.findViewById(R.id.recycle);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
-        MyAdpater myadp = new MyAdpater(item);
+        MyAdapter myadp = new MyAdapter(item);
         rcv.setAdapter(myadp);
         bsd.show();
     }

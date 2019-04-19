@@ -25,7 +25,7 @@ ArrayList<ArrayList<item>>items=new ArrayList<ArrayList<item>>();
         RecyclerView rcv=(RecyclerView)findViewById(R.id.rcv3);
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
-        MyAdpater3 myAdpater3=new MyAdpater3(items);
+        MyAdapter3 myAdpater3=new MyAdapter3(items);
         rcv.setAdapter(myAdpater3);
         rcv.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
     }

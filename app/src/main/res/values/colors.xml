@@ -9,4 +9,6 @@
     <color name="green">#00FF00</color>
     <color name="blue">#0000FF</color>
     <color name="lightblue">#177fff</color>
+    <color name="lightgray">#189ca6b1</color>
+    <color name="white">#FFFFFF</color>
 </resources>
