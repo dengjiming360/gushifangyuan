@@ -23,12 +23,22 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
     private Drawable mDivider;
 
     private int mOrientation;
-
+    public static final int LEFT=1;
+    public static final int RIGHT=2;
+    public static final int BOTHV=3;
+    public static final int NONEV=4;
+    public static final int UP=5;
+    public static final int DOWN=6;
+    public static final int BOTHH=7;
+    public static final int NONEH=8;
     /**
      * 分割线缩进值
      */
     private int inset;
-
+    int typeV;
+    int typeH;
+    int numV;
+    int numH;
     private Paint paint;
 
     /**
@@ -37,9 +47,13 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
      * @param drawable    引入的drawable的ID
      * @param inset       分割线缩进值
      */
-    public CustomDecoration(Context context, int orientation, int drawable, int inset) {
+    public CustomDecoration(Context context, int orientation, int drawable, int inset,int typeV,int typeH,int numV,int numH) {
         mDivider = context.getResources().getDrawable(drawable);
         this.inset = inset;
+        this.typeH=typeH;
+        this.typeV=typeV;
+        this.numH=numH;
+        this.numV=numV;
         paint = new Paint();
         paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
@@ -66,17 +80,27 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
     private void drawVertical(Canvas c, RecyclerView parent) {
         final int left = parent.getPaddingLeft();
         final int right = parent.getWidth() - parent.getPaddingRight();
-
         final int childCount = parent.getChildCount();
         //最后一个item不画分割线
-        for (int i = 0; i < childCount - 1; i++) {
+        for (int i = 0; i < childCount - numV; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
             final int bottom = top + mDivider.getIntrinsicHeight();
             if (inset > 0) {
                 c.drawRect(left, top, right, bottom, paint);
-                mDivider.setBounds(left, top, right - inset, bottom);
+                if(typeV==LEFT) {
+                    mDivider.setBounds(left + inset, top, right, bottom);
+                }
+                if(typeV==RIGHT) {
+                    mDivider.setBounds(left, top, right-inset, bottom);
+                }
+                if(typeV==BOTHV) {
+                    mDivider.setBounds(left + inset, top, right-inset, bottom);
+                }
+                if(typeV==NONEV) {
+                    mDivider.setBounds(left, top, right, bottom);
+                }
             } else {
                 mDivider.setBounds(left, top, right, bottom);
             }
@@ -89,12 +113,29 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
 
         final int childCount = parent.getChildCount();
-        for (int i = 0; i < childCount - 1; i++) {
+        for (int i = 0; i < childCount - numH; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + params.rightMargin;
             final int right = left + mDivider.getIntrinsicHeight();
             mDivider.setBounds(left, top, right, bottom);
+            if(inset>0) {
+                if (typeH == UP) {
+                    mDivider.setBounds(left , top+inset, right, bottom);
+                }
+                if (typeH == DOWN) {
+                    mDivider.setBounds(left, top, right, bottom-inset);
+                }
+                if (typeV == BOTHH) {
+                    mDivider.setBounds(left, top+inset, right, bottom-inset);
+                }
+                if (typeV == NONEH) {
+                    mDivider.setBounds(left, top, right, bottom);
+                }
+            }
+            else{
+                mDivider.setBounds(left, top, right, bottom);
+            }
             mDivider.draw(c);
         }
     }

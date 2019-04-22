@@ -15,20 +15,24 @@
         android:layout_marginRight="32dp"
         android:textSize="20sp"
         android:singleLine="true"/>
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/rcv8"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             >
         </android.support.v7.widget.RecyclerView>
 
         <HorizontalScrollView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/hoscroll">
+            android:id="@+id/hoscroll"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@id/rcv8">
     <android.support.v7.widget.RecyclerView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,6 +41,5 @@
         >
     </android.support.v7.widget.RecyclerView>
         </HorizontalScrollView>
-
-    </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

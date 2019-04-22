@@ -21,9 +21,10 @@ import java.util.ArrayList;
 public class Main4Activity extends AppCompatActivity {
 ArrayList<ArrayList<item3>> arr2=new ArrayList<ArrayList<item3>>();
 ArrayList<item3>arr3;
-TextView tvt9;
-public static int scrollX;
 public static HorizontalScrollView hoscroll;
+public static int scrollX;
+int pos=-1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,14 +40,14 @@ public static HorizontalScrollView hoscroll;
         llm2.setOrientation(LinearLayoutManager.VERTICAL);
         MyAdapter6 myAdpater6=new MyAdapter6(this,arr2,heightPixels);
         rcv2.setAdapter(myAdpater6);
-        rcv2.addItemDecoration(new CustomDecoration2(this,CustomDecoration2.VERTICAL_LIST,R.drawable.divide,40));
+        rcv2.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.LEFT,CustomDecoration.NONEH,1,1));
         final RecyclerView rcv=findViewById(R.id.rcv4);
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         MyAdapter4 myAdpater4=new MyAdapter4(this,arr2,heightPixels,getResources());
         rcv.setAdapter(myAdpater4);
-        rcv.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40));
+        rcv.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.RIGHT,CustomDecoration.NONEH,1,1));
         rcv2.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -73,6 +74,12 @@ public static HorizontalScrollView hoscroll;
                 }
             }
         });
+        myAdpater4.setOnItemClickListener(new MyAdapter4.ItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                  System.out.println("忽必烈"+position);
+            }
+        });
         final HorizontalScrollView horizontalScrollView=findViewById(R.id.hoscroll);
         setHoscroll(horizontalScrollView);
         horizontalScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
@@ -80,19 +87,17 @@ public static HorizontalScrollView hoscroll;
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if(scrollX==0){
                      setScrollX(0);
-                     MyAdapter4.VH3.imgleft.setX(scrollX+20);
+
                 }
                 if(scrollX>0&&scrollX<rcv.getWidth()-v.getWidth()){
                      setScrollX(scrollX);
-                     MyAdapter4.VH3.imgleft.setX(scrollX+20);
+
                 }
                 if(scrollX==rcv.getWidth()-v.getWidth()){
                      setScrollX(scrollX);
-                     MyAdapter4.VH3.imgleft.setX(scrollX+20);
                 }
             }
         });
-
 }
 public static int getScrollX(){
         return scrollX;
