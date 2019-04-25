@@ -34,40 +34,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0d1722">
-    <include layout="@layout/layout17"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:id="@+id/tvt1"
-        android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt2"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt3"
-            android:layout_weight="1"></include>
-    </LinearLayout>
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0d1722">
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt4"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt5"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt6"
-            android:layout_weight="1"></include>
+        android:id="@+id/rcv11">
+
+    </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </LinearLayout>
