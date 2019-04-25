@@ -1,71 +1,39 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#111f2d"
     android:orientation="vertical">
-    <LinearLayout
+    <View android:layout_height="5dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#111f2d"
-        >
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:background="#111f2d"
-            android:textColor="#FFFFFF"
-            android:paddingLeft="20dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
-            android:id="@+id/tvt7"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:background="#0d1722">
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#177fff"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"/>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+    </View>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#0d1722">
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt1"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt2"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/tvt3"
-            android:layout_weight="1"></include>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:textColor="#FFFFFF"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:id="@+id/textview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"/>
+    <CheckBox
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/sector"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="12dp"
+        android:id="@+id/checkbox"
+        android:button="@null"
+        />
+</RelativeLayout>
+    <View android:layout_height="5dp"
+        android:layout_width="match_parent"
         android:background="#0d1722">
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/tvt4"
-            android:layout_weight="1"></include>
-        <include layout="@layout/layout17"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent"
-            android:id="@+id/tvt5"
-            android:layout_weight="1"></include>
-        <View android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"></View>
-    </LinearLayout>
+    </View>
 </LinearLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#0d1722">
+   <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:background="#111f2d"
+       android:orientation="horizontal"
+        >
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:src="@drawable/cancel"
+        android:id="@+id/cancelbutton"
+        android:layout_gravity="left"
+        android:paddingBottom="5dp"
+        android:layout_weight="4"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="编辑首页展示"
+           android:textColor="#FFFFFF"
+           android:padding="8dp"
+          android:gravity="center_horizontal"
+           android:textSize="20dp"
+           android:layout_weight="2"/>
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="完成"
+           android:gravity="right"
+           android:textColor="#177FFF"
+           android:layout_weight="4"
+           android:textSize="20dp"
+           android:padding="8dp"/>
+    </LinearLayout>
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rcv12">
+</android.support.v7.widget.RecyclerView>
+</LinearLayout>
