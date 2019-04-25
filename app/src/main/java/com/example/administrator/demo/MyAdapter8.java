@@ -45,7 +45,6 @@ public class MyAdapter8 extends RecyclerView.Adapter<MyAdapter8.VH6> {
         holder.tvt7.setText(arr1.get(position));
         GridLayoutManager grid=new GridLayoutManager(context,3, OrientationHelper.VERTICAL,false);
         holder.rcv11.setLayoutManager(grid);
-        System.out.println("泰定"+arr2.get(position).size());
         MyAdapter9 myAdapter9=new MyAdapter9(arr2.get(position));
         holder.rcv11.setAdapter(myAdapter9);
     }

@@ -2,8 +2,9 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
@@ -11,15 +12,25 @@
         android:textColor="#e4e4e4"
         android:textSize="20sp"
         android:layout_marginLeft="20dp"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="14sp"
+        android:autoSizeMinTextSize="6sp"
+        app:autoSizeStepGranularity="1sp"
         />
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:id="@+id/tv2"
         android:textColor="#6d7987"
         android:layout_marginLeft="20dp"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:maxLines="1"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMaxTextSize="14sp"
+        android:autoSizeMinTextSize="6sp"
+        app:autoSizeStepGranularity="1sp"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"

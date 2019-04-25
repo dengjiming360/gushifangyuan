@@ -40,5 +40,6 @@ ArrayList<item5>item;
                 item.add(new item5("6532万份","基金份额"));
                 item.add(new item5("342.45亿","资产净值"));
             gushi.add(item);
+
         }
     }
