@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.example.administrator.demo.Main6Activity">
+    <include
+        android:id="@+id/title"
+        layout="@layout/title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <include
+        android:id="@+id/qsg1"
+        layout="@layout/qiangshigu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/qsg2"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+
+    <include
+        android:id="@+id/qsg2"
+        layout="@layout/qiangshigu"
+        app:layout_constraintLeft_toRightOf="@id/qsg3"
+        app:layout_constraintRight_toLeftOf="@id/qsg1"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        />
+
+    <include
+        android:id="@+id/qsg3"
+        layout="@layout/qiangshigu"
+        app:layout_constraintLeft_toRightOf="@id/qsg2"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/title"/>
+</android.support.constraint.ConstraintLayout>
