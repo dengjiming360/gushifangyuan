@@ -39,16 +39,13 @@ public class MyAdapter10 extends RecyclerView.Adapter<MyAdapter10.VH8> {
               public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                   if(isChecked==true){
                      ischecked.add(true);
-                      System.out.println("刘表"+ischecked.size());
                   }
                   if(isChecked==false){
                       ischecked.remove(ischecked.size()-1);
-                      System.out.println("刘表"+ischecked.size());
                       if(ischecked.size()==0){
                           ischecked.add(true);
                           LayoutInflater inflater=LayoutInflater.from(context);
                           View toast_view = inflater.inflate(R.layout.toast_layout,null);
-                          System.out.println("马超"+toast_view.getHeight());
                           Toast toast=new Toast(context);
                           toast.setGravity(Gravity.TOP | Gravity.FILL_HORIZONTAL, 0, toast_view.getHeight());
                           toast.setView(toast_view);
