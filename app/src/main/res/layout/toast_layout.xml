@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/lightblue">
+ <TextView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_gravity="center"
+     android:gravity="center"
+     android:text="至少保留一个板块在首页展示"
+     android:textColor="@color/white"
+     android:textSize="20sp"
+     android:padding="8dp"/>
+</LinearLayout>

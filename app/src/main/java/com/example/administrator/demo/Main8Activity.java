@@ -13,11 +13,12 @@ ArrayList<String>arr=new ArrayList<String>();
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main8);
+        getSupportActionBar().hide();
         init();
         RecyclerView rcv=findViewById(R.id.rcv12);
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
-        MyAdapter10 myAdapter10=new MyAdapter10(arr);
+        MyAdapter10 myAdapter10=new MyAdapter10(arr,this);
         rcv.setAdapter(myAdapter10);
     }
 

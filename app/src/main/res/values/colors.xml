@@ -11,4 +11,8 @@
     <color name="lightblue">#177fff</color>
     <color name="lightgray">#189ca6b1</color>
     <color name="white">#FFFFFF</color>
+    <color name="mycolor1">#111f2d</color>
+    <color name="mycolor2">#0d1722</color>
+    <color name="die">#1cc88c</color>
+    <color name="zhang">#f95252</color>
 </resources>
