@@ -22,7 +22,9 @@ ArrayList<item3>arr3;
 public static HorizontalScrollView hoscroll;
 public static int scrollX;
 View viewgr,viewgr2;
+float x1,x2,y1,y2;
 public static LinearLayoutManager llm1,llm2;
+int pos=-1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public static LinearLayoutManager llm1,llm2;
         llm2.setOrientation(LinearLayoutManager.VERTICAL);
         final MyAdapter6 myAdpater6=new MyAdapter6(this,arr2,heightPixels,getResources());
         rcv2.setAdapter(myAdpater6);
-        rcv2.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.LEFT,CustomDecoration.NONEH,1,1));
+        rcv2.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.LEFT,CustomDecoration.NONEH,0,0,1,1));
         final RecyclerView rcv=findViewById(R.id.rcv4);
         final LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv.setLayoutManager(llm);
@@ -46,7 +48,7 @@ public static LinearLayoutManager llm1,llm2;
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         final MyAdapter4 myAdpater4=new MyAdapter4(this,arr2,heightPixels,getResources());
         rcv.setAdapter(myAdpater4);
-        rcv.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.RIGHT,CustomDecoration.NONEH,1,1));
+        rcv.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.RIGHT,CustomDecoration.NONEH,0,0,1,1));
         rcv2.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -73,6 +75,9 @@ public static LinearLayoutManager llm1,llm2;
                 }
             }
         });
+        rcv.setHasFixedSize(true);
+        rcv.setNestedScrollingEnabled(false);
+        System.out.println(rcv.getChildCount());
      /*  myAdpater4.setOnItemClickListener(new MyAdapter4.OnItemClickListener() {
 
 
@@ -99,19 +104,26 @@ public static LinearLayoutManager llm1,llm2;
         myAdpater4.setmOnTouchListener(new MyAdapter4.OnTouchListener() {
             @Override
             public void onTouch2(View view, int position, MotionEvent mo) {
-                if(mo.getAction()==MotionEvent.ACTION_DOWN){
-                    MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.RED);
-                    view.setBackgroundColor(Color.RED);
+
+                   if(mo.getAction()==MotionEvent.ACTION_DOWN){
+                       pos=position;
+                       MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.RED);
+                       view.setBackgroundColor(Color.RED);
+                   }
+                   if(mo.getAction()==MotionEvent.ACTION_MOVE){
+
+                   }
+                   if(mo.getAction()==MotionEvent.ACTION_UP){
+                       MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.TRANSPARENT);
+                       view.setBackgroundColor(Color.TRANSPARENT);
+                   }
                 }
-                if(mo.getAction()==MotionEvent.ACTION_UP){
-                    MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.TRANSPARENT);
-                    view.setBackgroundColor(Color.TRANSPARENT);
-                }
-            }
         });
+
         myAdpater6.setmOnTouchListener(new MyAdapter6.OnTouchListener(){
             public void onTouch2(View view, int position, MotionEvent mo) {
                 if(mo.getAction()==MotionEvent.ACTION_DOWN){
+                    pos=position;
                     MyAdapter4.getVhmap().get(position).linear.setBackgroundColor(Color.RED);
                     view.setBackgroundColor(Color.RED);
                 }
@@ -123,6 +135,7 @@ public static LinearLayoutManager llm1,llm2;
         });
         final HorizontalScrollView horizontalScrollView=findViewById(R.id.hoscroll);
         setHoscroll(horizontalScrollView);
+
         horizontalScrollView.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
@@ -136,15 +149,58 @@ public static LinearLayoutManager llm1,llm2;
                 }
                 if(scrollX==rcv.getWidth()-v.getWidth()){
                      setScrollX(scrollX);
+
                 }
             }
         });
-}
-protected void onResume() {
+        horizontalScrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    MyAdapter6.getVhmap().get(pos).linear2.setBackgroundColor(Color.TRANSPARENT);
+                    MyAdapter4.getVhmap().get(pos).linear.setBackgroundColor(Color.TRANSPARENT);
+                    for(int i=1;i<MyAdapter4.getVhmap().size();i++) {
+                        MyAdapter4.getVhmap().get(i).linear.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                    for(int i=1;i<MyAdapter6.getVhmap().size();i++){
+                        MyAdapter6.getVhmap().get(i).linear2.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+                return false;
+            }
 
-    super.onResume();
-    System.out.println("赵匡胤"+llm1.findViewByPosition(0));
+        });
+        rcv.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    for(int i=1;i<MyAdapter4.getVhmap().size();i++) {
+                        MyAdapter4.getVhmap().get(i).linear.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                    for(int i=1;i<MyAdapter6.getVhmap().size();i++){
+                        MyAdapter6.getVhmap().get(i).linear2.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+                return false;
+            }
+        });
+        rcv2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if(event.getAction()==MotionEvent.ACTION_UP){
+                    for(int i=1;i<MyAdapter4.getVhmap().size();i++) {
+                        MyAdapter4.getVhmap().get(i).linear.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                    for(int i=1;i<MyAdapter6.getVhmap().size();i++){
+                        MyAdapter6.getVhmap().get(i).linear2.setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+                return false;
+            }
+        });
+
 }
+
 /*Handler mHandler=new Handler(){
         public void handleMessage(Message msg){
             if(msg.what==1){
@@ -152,6 +208,7 @@ protected void onResume() {
             }
         }
     };*/
+
 public static int getScrollX(){
         return scrollX;
 }
@@ -230,4 +287,5 @@ public void setHoscroll(HorizontalScrollView hoscroll){
           arr2.add(arr3);
         }
     }
+
 }

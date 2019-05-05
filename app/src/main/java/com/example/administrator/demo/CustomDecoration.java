@@ -39,6 +39,7 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
     int typeH;
     int numV;
     int numH;
+    int beginV,beginH;
     private Paint paint;
 
     /**
@@ -47,19 +48,21 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
      * @param drawable    引入的drawable的ID
      * @param inset       分割线缩进值
      */
-    public CustomDecoration(Context context, int orientation, int drawable, int inset,int typeV,int typeH,int numV,int numH) {
+    public CustomDecoration(Context context, int orientation, int drawable, int inset,int typeV,int typeH,int beginV,int beginH,int numV,int numH) {
         mDivider = context.getResources().getDrawable(drawable);
         this.inset = inset;
         this.typeH=typeH;
         this.typeV=typeV;
         this.numH=numH;
         this.numV=numV;
+        this.beginH=beginH;
+        this.beginV=beginV;
         paint = new Paint();
-        paint.setColor(Color.WHITE);
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
         setOrientation(orientation);
     }
+
 
     public void setOrientation(int orientation) {
         if (orientation != HORIZONTAL_LIST && orientation != VERTICAL_LIST) {
@@ -82,7 +85,7 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
         final int right = parent.getWidth() - parent.getPaddingRight();
         final int childCount = parent.getChildCount();
         //最后一个item不画分割线
-        for (int i = 0; i < childCount - numV; i++) {
+        for (int i = beginV; i < childCount - numV; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int top = child.getBottom() + params.bottomMargin;
@@ -113,7 +116,7 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
         final int bottom = parent.getHeight() - parent.getPaddingBottom();
 
         final int childCount = parent.getChildCount();
-        for (int i = 0; i < childCount - numH; i++) {
+        for (int i = beginH; i < childCount - numH; i++) {
             final View child = parent.getChildAt(i);
             final RecyclerView.LayoutParams params = (RecyclerView.LayoutParams) child.getLayoutParams();
             final int left = child.getRight() + params.rightMargin;

@@ -105,7 +105,9 @@ public class MyAdapter6 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         }
                         int pos=vh2.getLayoutPosition();*/
                         int pos = vh.getLayoutPosition();
+
                         mOnTouchListener.onTouch2(vh.itemView, pos, event);
+
                         return true;
                     }
                 });

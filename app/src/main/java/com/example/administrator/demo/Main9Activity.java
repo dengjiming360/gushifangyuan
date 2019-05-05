@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -16,6 +18,11 @@ ArrayList<item6>myitem;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main9);
         init();
+        View view=findViewById(R.id.biaoti);
+        TextView tv1=(TextView)view.findViewById(R.id.tv1);
+        tv1.setText("个股异动");
+        TextView tv2=(TextView)view.findViewById(R.id.tv2);
+        tv2.setText("编辑");
         RecyclerView rcv14=findViewById(R.id.rcv14);
         LinearLayoutManager llm=new LinearLayoutManager(this);
         rcv14.setLayoutManager(llm);

@@ -129,6 +129,7 @@ public class MyAdapter4 extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         }
                         int pos=vh2.getLayoutPosition();*/
                         int pos=vh2.getLayoutPosition();
+
                         mOnTouchListener.onTouch2(vh2.itemView,pos,event);
                         return true;
                     }

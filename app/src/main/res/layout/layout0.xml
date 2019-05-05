@@ -1,0 +1,70 @@
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@color/mycolor2">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_weight="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="18dp"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:id="@+id/tv1"
+        android:text="全部"
+        />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/triangle"
+        android:background="@null"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="5dp"
+        android:id="@+id/imgbtn"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/tv2"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:gravity="right"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="center_vertical">
+    </TextView>
+        <include layout="@layout/updown"
+            android:layout_marginRight="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:id="@+id/tv3"
+        android:textSize="20sp"
+        android:gravity="right"
+        android:layout_marginRight="5dp"
+        android:textColor="@color/white"
+        android:layout_gravity="center_vertical"/>
+    <include layout="@layout/updown"
+        android:layout_marginRight="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        />
+</LinearLayout>
+</LinearLayout>

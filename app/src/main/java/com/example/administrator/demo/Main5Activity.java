@@ -1,5 +1,6 @@
 package com.example.administrator.demo;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,7 +22,7 @@ ArrayList<Item4>item4=new ArrayList();
         MyAdapter7 myAdapter7=new MyAdapter7(item4);
         recyclerView.setAdapter(myAdapter7);
         recyclerView.addItemDecoration(new MyDecoration(this));
-        recyclerView.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divider,50,CustomDecoration.BOTHV,CustomDecoration.NONEH,5,1));
+        recyclerView.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divider,50,CustomDecoration.BOTHV,CustomDecoration.NONEH,0,0,5,5));
     }
 
     private void init() {
