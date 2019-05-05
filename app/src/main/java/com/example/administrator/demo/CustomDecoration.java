@@ -58,6 +58,7 @@ public class CustomDecoration extends RecyclerView.ItemDecoration {
         this.beginH=beginH;
         this.beginV=beginV;
         paint = new Paint();
+        paint.setColor(context.getResources().getColor(R.color.white));
         paint.setStyle(Paint.Style.FILL);
         paint.setAntiAlias(true);
         setOrientation(orientation);

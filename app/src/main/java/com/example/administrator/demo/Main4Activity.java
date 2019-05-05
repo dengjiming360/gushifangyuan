@@ -105,13 +105,10 @@ int pos=-1;
             @Override
             public void onTouch2(View view, int position, MotionEvent mo) {
 
-                   if(mo.getAction()==MotionEvent.ACTION_DOWN){
-                       pos=position;
+                   if(mo.getAction()==MotionEvent.ACTION_DOWN) {
+                       pos = position;
                        MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.RED);
                        view.setBackgroundColor(Color.RED);
-                   }
-                   if(mo.getAction()==MotionEvent.ACTION_MOVE){
-
                    }
                    if(mo.getAction()==MotionEvent.ACTION_UP){
                        MyAdapter6.getVhmap().get(position).linear2.setBackgroundColor(Color.TRANSPARENT);
@@ -166,6 +163,7 @@ int pos=-1;
                         MyAdapter6.getVhmap().get(i).linear2.setBackgroundColor(Color.TRANSPARENT);
                     }
                 }
+
                 return false;
             }
 
