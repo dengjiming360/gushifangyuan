@@ -1,21 +1,30 @@
 package com.example.administrator.demo;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
+import com.yuyh.library.BubblePopupWindow;
 
 import java.util.ArrayList;
 
@@ -33,6 +42,7 @@ static int rowcount=-1;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main10);
+        statusline();
         initarr();
         initdata();
         cal();
@@ -59,6 +69,25 @@ static int rowcount=-1;
         });
 */
 
+    }
+
+    private int statusline() {
+        int statusBarHeight1 = -1;
+//获取status_bar_height资源的ID
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0) {
+            //根据资源ID获取响应的尺寸值
+            statusBarHeight1 = getResources().getDimensionPixelSize(resourceId);
+        }
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        Rect outRect1 = new Rect();
+        getWindow().getDecorView().getWindowVisibleDisplayFrame(outRect1);
+        Rect outRect2 = new Rect();
+        getWindow().findViewById(Window.ID_ANDROID_CONTENT).getDrawingRect(outRect2);
+        int viewTop = getWindow().findViewById(Window.ID_ANDROID_CONTENT).getTop();
+        int titleHeight1 = viewTop - outRect1.top;
+        return titleHeight1+statusBarHeight1;
     }
 
     private void cal() {
@@ -106,61 +135,105 @@ static int rowcount=-1;
         arr.add("货币基金");
         arr.add("国债逆回购");
     }
+  /*  private  int[] calculatePopWindowPos(final View anchorView, final View contentView) {
+        final int windowPos[] = new int[2];
+        final int anchorLoc[] = new int[2];
+        // 获取锚点View在屏幕上的左上角坐标位置
+        anchorView.getLocationOnScreen(anchorLoc);
+        final int anchorHeight = anchorView.getHeight();
+        // 获取屏幕的高宽
+        final int screenHeight = ScreenUtil.getScreenHeight(anchorView.getContext());
+        final int screenWidth = ScreenUtil.getScreenWidth(anchorView.getContext());
+        contentView.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        // 计算contentView的高宽
+        final int windowHeight = contentView.getMeasuredHeight();
+        final int windowWidth = contentView.getMeasuredWidth();
+        // 判断需要向上弹出还是向下弹出显示
+        final boolean isNeedShowUp = (screenHeight - anchorLoc[1] - anchorHeight < windowHeight);
+        if (isNeedShowUp) {
+            windowPos[0] = screenWidth - windowWidth;
+            windowPos[1] = anchorLoc[1] - windowHeight;
+        } else {
+            windowPos[0] = screenWidth - windowWidth;
+            windowPos[1] = anchorLoc[1] + anchorHeight;
+        }
+        return windowPos;
+    }*/
     private void initpopupwindow(View v) {
-        View view= LayoutInflater.from(this).inflate(R.layout.popupwindowlayout1,null,false);
-        final PopupWindow popupWindow=new PopupWindow(view,350,ViewGroup.LayoutParams.WRAP_CONTENT,true);
-        popupWindow.setAnimationStyle(R.anim.showpopup);
-        popupWindow.setContentView(view);
-        RecyclerView rcv16=(RecyclerView)view.findViewById(R.id.rcv16);
-        LinearLayoutManager llm=new LinearLayoutManager(this);
+        View view = LayoutInflater.from(this).inflate(R.layout.popupwindowlayout1, null, false);
+        View view1=myAdapter13.getMap().get(0).imgbtn;
+        int x=(int)view1.getX();
+        int y=(int)view1.getY();
+        int newy=y+statusline();
+        view.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        view1.measure(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+        int h=view1.getMeasuredHeight();
+        int w=view1.getMeasuredWidth();
+        int finalx=w+x;
+        int finaly=newy+h;
+        /*  final BubblePopupWindow popupWindow=new BubblePopupWindow(this);
+
+        popupWindow.setBubbleView(view);
+        popupWindow.show(v, Gravity.BOTTOM,0);
+        /*popupWindow.setAnimationStyle(R.anim.showpopup);*/
+        final BubbleWindow bubbleWindow=new BubbleWindow(this,this.getResources().getColor(R.color.mycolor1));
+        bubbleWindow.setBubbleView(view,this.getResources().getColor(R.color.mycolor1));
+        /*View windowContentViewRoot = view1;
+        int windowPos[] = calculatePopWindowPos(view, windowContentViewRoot);
+        int xOff = 0;// 可以自己调整偏移
+        windowPos[0] -= xOff;*/
+        bubbleWindow.show(v, Gravity.BOTTOM,60,(int)(finalx-triangle.PADDING*1.5)-60,(int)(finaly+triangle.PADDING*1.5));
+// windowContentViewRoot是根布局View
+        //bubbleWindow.show(view,Gravity.BOTTOM,0);
+        RecyclerView rcv16 = (RecyclerView) view.findViewById(R.id.rcv16);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
         rcv16.setLayoutManager(llm);
-        final MyAdapter14 myAdapter14=new MyAdapter14(arr);
+        final MyAdapter14 myAdapter14 = new MyAdapter14(arr);
         rcv16.setAdapter(myAdapter14);
-        popupWindow.setTouchable(true);
+        /*popupWindow.setTouchable(true);
         popupWindow.setClippingEnabled(false);
+        rcv16.addItemDecoration(new CustomDecoration(this,CustomDecoration.VERTICAL_LIST,R.drawable.divide,40,CustomDecoration.BOTHV,CustomDecoration.NONEH,0,0,1,1));
         popupWindow.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.mycolor1)));
         popupWindow.setTouchInterceptor(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 return false;
             }
-        });
-        popupWindow.showAsDropDown(v,50,0);
+        });*/
         myAdapter14.setMyonclick(new MyAdapter14.myOnClickListener() {
             @Override
             public void onClick(View view, int position) {
-                num=position;
-                int begin=1;
-                for(int i=0;i<position;i++){
-                   begin=begin+copyitemlist.get(i).size();
-                   itemcount.add(begin);
+                num = position;
+                int begin = 1;
+                for (int i = 0; i < position; i++) {
+                    begin = begin + copyitemlist.get(i).size();
+                    itemcount.add(begin);
                 }
 
-                if(position!=0){
-                    if(itemlist.size()==copyitemlist.size()) {
+                if (position != 0) {
+                    if (itemlist.size() == copyitemlist.size()) {
                         for (int i = 0; i < copyitemlist.size(); i++) {
                             myAdapter13.deleteData(0);
                         }
-                        myAdapter13.addData(copyitemlist,position-1);
-                    }
-                    else{
+                        myAdapter13.addData(copyitemlist, position - 1);
+                    } else {
                         myAdapter13.deleteData(0);
-                        myAdapter13.addData(copyitemlist,position-1);
+                        myAdapter13.addData(copyitemlist, position - 1);
                     }
 
 
                 }
-                if(position==0){
-                    if(itemlist.size()==1) {
+                if (position == 0) {
+                    if (itemlist.size() == 1) {
                         myAdapter13.deleteData(0);
-                        for(int i=0;i<copyitemlist.size();i++){
-                            myAdapter13.addData(copyitemlist,i);
+                        for (int i = 0; i < copyitemlist.size(); i++) {
+                            myAdapter13.addData(copyitemlist, i);
                         }
                     }
                 }
-                 TextView tv2=myAdapter13.getMap().get(0).tv1;
-                 tv2.setText(arr.get(position));
-                popupWindow.dismiss();
+                TextView tv2 = myAdapter13.getMap().get(0).tv1;
+                tv2.setText(arr.get(position));
+               bubbleWindow.dismiss();
             }
         });
     }
